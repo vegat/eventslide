@@ -79,7 +79,9 @@ $state = loadState();
         <div class="announcement__inner">
             <div class="announcement__header">Nadchodzący prelegent</div>
             <div class="announcement__content">
-                <img src="" alt="Zdjęcie prelegenta" class="announcement__photo">
+                <div class="announcement__photo-wrap">
+                    <img src="" alt="Zdjęcie prelegenta" class="announcement__photo">
+                </div>
                 <div class="announcement__details">
                     <div class="announcement__speaker">
                         <div class="announcement__speaker-name"></div>
