@@ -431,6 +431,7 @@ body.showing-announcement .slideshow {
     background: #12ff00;
     z-index: 5;
     opacity: 0;
+    transition: opacity 1.5s ease;
     pointer-events: none;
     clip-path: polygon(50% 100%, 50% 100%, 50% 100%);
     will-change: clip-path, opacity;
