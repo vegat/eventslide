@@ -230,12 +230,12 @@ body.showing-announcement .slideshow {
 }
 
 .announcement__inner {
-    width: min(70vw, 1200px);
+    width: min(78vw, 1380px);
     background: rgba(8, 15, 32, 0.9);
     border-radius: 24px;
-    padding: 3rem;
+    padding: 3.4rem 4rem;
     display: grid;
-    gap: 2rem;
+    gap: 2.4rem;
     transform: translateY(60px);
     opacity: 0;
     transition: opacity 0.9s ease, transform 0.9s ease, background 1.4s ease;
@@ -256,9 +256,9 @@ body.showing-announcement .slideshow {
 
 .announcement__content {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 3rem;
-    align-items: center;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.65fr);
+    gap: 3.6rem;
+    align-items: start;
 }
 
 .announcement__photo {
@@ -269,6 +269,8 @@ body.showing-announcement .slideshow {
     opacity: 0;
     transform: translateY(50px) scale(0.9);
     transition: opacity 1.1s ease, transform 1.1s ease, filter 1.1s ease;
+    max-height: min(520px, 65vh);
+    align-self: stretch;
 }
 
 .announcement--show-photo .announcement__photo {
@@ -278,8 +280,9 @@ body.showing-announcement .slideshow {
 
 .announcement__details {
     display: grid;
-    gap: 1.6rem;
+    gap: 1.9rem;
     transition: opacity 1.2s ease, transform 1.2s ease;
+    min-height: 100%;
 }
 
 .announcement__speaker {
@@ -326,15 +329,15 @@ body.showing-announcement .slideshow {
 }
 
 .announcement__title {
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-size: clamp(1.9rem, 3.1vw, 3rem);
     color: var(--text-secondary);
     line-height: 1.5;
     letter-spacing: 0.015em;
     position: relative;
-    min-height: clamp(3.6rem, 6vw, 5.4rem);
+    min-height: clamp(5rem, 8vw, 8.5rem);
     display: block;
     overflow: hidden;
-    max-height: var(--typewriter-target-height, 6rem);
+    max-height: var(--typewriter-target-height, 16rem);
     transition: max-height 0.65s ease;
 }
 
@@ -344,6 +347,7 @@ body.showing-announcement .slideshow {
     transition: opacity 0.4s ease;
     white-space: normal;
     position: relative;
+    width: 100%;
 }
 
 .announcement--show-title .announcement__title-text {
@@ -431,7 +435,6 @@ body.showing-announcement .slideshow {
     background: #12ff00;
     z-index: 5;
     opacity: 0;
-    transition: opacity 1.5s ease;
     pointer-events: none;
     clip-path: polygon(50% 100%, 50% 100%, 50% 100%);
     will-change: clip-path, opacity;
