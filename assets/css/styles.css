@@ -375,6 +375,8 @@ body.showing-announcement .slideshow {
     overflow: hidden;
     max-height: var(--typewriter-target-height, 26rem);
     transition: max-height 0.65s ease;
+    word-break: normal;
+    hyphens: manual;
 }
 
 .announcement__title-text {
@@ -396,6 +398,11 @@ body.showing-announcement .slideshow {
 
 .announcement__title-text.is-finished {
     opacity: 1;
+}
+
+.announcement__title-word {
+    display: inline-flex;
+    white-space: nowrap;
 }
 
 .announcement__title-cursor {

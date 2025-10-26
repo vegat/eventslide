@@ -137,6 +137,20 @@
         sequence.cancelCallbacks.push(cancelTyping);
 
         let index = 0;
+        let currentWordContainer = null;
+
+        const ensureWordContainer = () => {
+            if (!currentWordContainer) {
+                currentWordContainer = document.createElement('span');
+                currentWordContainer.className = 'announcement__title-word';
+                target.insertBefore(currentWordContainer, cursor);
+            }
+            return currentWordContainer;
+        };
+
+        const closeWordContainer = () => {
+            currentWordContainer = null;
+        };
 
         function typeNext() {
             if (sequence.cancelled) {
@@ -144,15 +158,20 @@
                 return;
             }
             if (index < text.length) {
-                const letter = document.createElement('span');
-                letter.className = 'announcement__title-letter';
                 const char = text.charAt(index);
                 if (char === '\n') {
-                    letter.innerHTML = '<br />';
+                    closeWordContainer();
+                    target.insertBefore(document.createElement('br'), cursor);
+                } else if (char === ' ') {
+                    closeWordContainer();
+                    target.insertBefore(document.createTextNode(' '), cursor);
                 } else {
-                    letter.textContent = char === ' ' ? '\u00A0' : char;
+                    const wordContainer = ensureWordContainer();
+                    const letter = document.createElement('span');
+                    letter.className = 'announcement__title-letter';
+                    letter.textContent = char;
+                    wordContainer.appendChild(letter);
                 }
-                target.insertBefore(letter, cursor);
                 index += 1;
                 const delay = 50 + Math.random() * 35;
                 const timeoutId = setTimeout(() => {
@@ -161,6 +180,7 @@
                 }, delay);
                 sequence.timeouts.push(timeoutId);
             } else {
+                closeWordContainer();
                 cleanupTyping({ preserveText: true });
                 target.classList.add('is-finished');
                 target.setAttribute('aria-label', text);
