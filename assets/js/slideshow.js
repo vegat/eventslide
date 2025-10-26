@@ -5,7 +5,8 @@
     const slides = Array.from(document.querySelectorAll('.slide'));
     const announcementEl = document.getElementById('announcement');
     const announcementPhoto = announcementEl?.querySelector('.announcement__photo');
-    const announcementSpeaker = announcementEl?.querySelector('.announcement__speaker');
+    const announcementSpeakerName = announcementEl?.querySelector('.announcement__speaker-name');
+    const announcementSpeakerRole = announcementEl?.querySelector('.announcement__speaker-role');
     const announcementTitleText = announcementEl?.querySelector('.announcement__title-text');
     const announcementTime = announcementEl?.querySelector('.announcement__time');
     const announcementFinal = announcementEl?.querySelector('.announcement__final');
@@ -153,7 +154,7 @@
                 }
                 target.insertBefore(letter, cursor);
                 index += 1;
-                const delay = 70 + Math.random() * 60;
+                const delay = 50 + Math.random() * 35;
                 const timeoutId = setTimeout(() => {
                     sequence.timeouts = sequence.timeouts.filter((id) => id !== timeoutId);
                     typeNext();
@@ -189,8 +190,11 @@
             announcementTitleText.style.removeProperty('max-height');
             announcementTitleText.style.removeProperty('--typewriter-target-height');
         }
-        if (announcementSpeaker) {
-            announcementSpeaker.textContent = '';
+        if (announcementSpeakerName) {
+            announcementSpeakerName.textContent = '';
+        }
+        if (announcementSpeakerRole) {
+            announcementSpeakerRole.textContent = '';
         }
         if (announcementTime) {
             announcementTime.textContent = '';
@@ -271,10 +275,14 @@
 
         if (announcementPhoto) {
             announcementPhoto.src = talk.photo;
-            announcementPhoto.alt = talk.speaker ? `Zdjęcie ${talk.speaker}` : 'Zdjęcie prelegenta';
+            const altSpeaker = talk.speaker || 'prelegenta';
+            announcementPhoto.alt = `Zdjęcie ${altSpeaker}`;
         }
-        if (announcementSpeaker) {
-            announcementSpeaker.textContent = talk.speaker;
+        if (announcementSpeakerName) {
+            announcementSpeakerName.textContent = talk.speaker || '';
+        }
+        if (announcementSpeakerRole) {
+            announcementSpeakerRole.textContent = talk.speakerRole || '';
         }
         if (announcementTime) {
             announcementTime.textContent = `Start: ${talk.time}`;

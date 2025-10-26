@@ -19,7 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($talkIndex !== null && isset($talks[$talkIndex])) {
             $state = ['mode' => 'announcement', 'activeTalk' => $talkIndex];
             saveState($state);
-            $message = 'Wyświetlam zapowiedź prelegenta: ' . $talks[$talkIndex]['speaker'];
+            $selectedTalk = $talks[$talkIndex];
+            $speakerLabel = $selectedTalk['speaker'] ?? 'Prelegent';
+            if (!empty($selectedTalk['speakerRole'])) {
+                $speakerLabel .= ' — ' . $selectedTalk['speakerRole'];
+            }
+            $message = 'Wyświetlam zapowiedź prelegenta: ' . $speakerLabel;
         } else {
             $message = 'Niepoprawny wybór prelegenta.';
         }
@@ -103,8 +108,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="card">
             <h2>Stan pokazu</h2>
             <p class="status">Tryb: <strong><?= htmlspecialchars($state['mode']) ?></strong></p>
-            <?php if ($state['mode'] === 'announcement' && $state['activeTalk'] !== null && isset($talks[$state['activeTalk']])): ?>
-                <p class="status">Zapowiedź: <strong><?= htmlspecialchars($talks[$state['activeTalk']]['speaker']) ?></strong></p>
+            <?php if ($state['mode'] === 'announcement' && $state['activeTalk'] !== null && isset($talks[$state['activeTalk']])):
+                $activeTalk = $talks[$state['activeTalk']];
+                $activeLabel = $activeTalk['speaker'] ?? '';
+                if (!empty($activeTalk['speakerRole'])) {
+                    $activeLabel .= ' — ' . $activeTalk['speakerRole'];
+                }
+            ?>
+                <p class="status">Zapowiedź: <strong><?= htmlspecialchars($activeLabel) ?></strong></p>
             <?php endif; ?>
             <form method="post">
                 <input type="hidden" name="action" value="slideshow">
@@ -119,6 +130,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <form method="post" class="talk">
                         <div>
                             <div><strong><?= htmlspecialchars($talk['speaker']) ?></strong></div>
+                            <?php if (!empty($talk['speakerRole'])): ?>
+                                <div><?= htmlspecialchars($talk['speakerRole']) ?></div>
+                            <?php endif; ?>
                             <div><?= htmlspecialchars($talk['title']) ?></div>
                             <div>Godzina: <?= htmlspecialchars($talk['time']) ?></div>
                         </div>
