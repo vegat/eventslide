@@ -46,6 +46,7 @@ $state = loadState();
                                 <div class="agenda-item__info">
                                     <span class="agenda-item__title"><?= htmlspecialchars($talk['title']) ?></span>
                                     <span class="agenda-item__speaker"><?= htmlspecialchars($talk['speaker']) ?></span>
+                                    <span class="agenda-item__role"><?= htmlspecialchars($talk['speakerRole'] ?? '') ?></span>
                                 </div>
                             </li>
                         <?php endforeach; ?>
@@ -80,7 +81,10 @@ $state = loadState();
             <div class="announcement__content">
                 <img src="" alt="Zdjęcie prelegenta" class="announcement__photo">
                 <div class="announcement__details">
-                    <div class="announcement__speaker"></div>
+                    <div class="announcement__speaker">
+                        <div class="announcement__speaker-name"></div>
+                        <div class="announcement__speaker-role"></div>
+                    </div>
                     <div class="announcement__title"><span class="announcement__title-text"></span></div>
                     <div class="announcement__time"></div>
                 </div>
