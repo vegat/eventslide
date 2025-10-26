@@ -81,7 +81,7 @@ $state = loadState();
                 <img src="" alt="Zdjęcie prelegenta" class="announcement__photo">
                 <div class="announcement__details">
                     <div class="announcement__speaker"></div>
-                    <div class="announcement__title"></div>
+                    <div class="announcement__title"><span class="announcement__title-text"></span></div>
                     <div class="announcement__time"></div>
                 </div>
             </div>
