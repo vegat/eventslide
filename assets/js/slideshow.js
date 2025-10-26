@@ -30,6 +30,7 @@
         'announcement--show-speaker',
         'announcement--show-time',
         'announcement--show-title',
+        'announcement--exit-phase',
         'announcement--final-stage',
     ];
 
@@ -237,7 +238,8 @@
         const timeDelay = 2700;
         const titleDelay = 3300;
         const typeDuration = Math.max(3200, titleText.length * 95);
-        const finalDelay = titleDelay + typeDuration + 6500;
+        const exitPhaseDelay = titleDelay + typeDuration + 10000;
+        const finalDelay = exitPhaseDelay + 4000;
 
         schedule(sequence, () => {
             announcementEl.classList.add('announcement--show-inner');
@@ -259,6 +261,10 @@
             announcementEl.classList.add('announcement--show-title');
             startTypewriter(sequence, announcementTitleText, titleText);
         }, titleDelay);
+
+        schedule(sequence, () => {
+            announcementEl.classList.add('announcement--exit-phase');
+        }, exitPhaseDelay);
 
         schedule(sequence, () => {
             announcementEl.classList.add('announcement--final-stage');

@@ -190,6 +190,7 @@ body.showing-announcement .slideshow {
     opacity: 0;
     background: rgba(15, 23, 42, 0);
     pointer-events: none;
+    transition: background 3.2s ease;
 }
 
 .announcement[hidden] {
@@ -211,7 +212,7 @@ body.showing-announcement .slideshow {
     gap: 2rem;
     transform: translateY(60px);
     opacity: 0;
-    transition: opacity 0.9s ease, transform 0.9s ease;
+    transition: opacity 0.9s ease, transform 0.9s ease, background 1.4s ease;
 }
 
 .announcement--show-inner .announcement__inner {
@@ -224,6 +225,7 @@ body.showing-announcement .slideshow {
     text-transform: uppercase;
     letter-spacing: 0.3em;
     color: var(--accent);
+    transition: opacity 1.1s ease, transform 1.1s ease;
 }
 
 .announcement__content {
@@ -240,7 +242,7 @@ body.showing-announcement .slideshow {
     box-shadow: 0 20px 50px rgba(8, 20, 40, 0.7);
     opacity: 0;
     transform: translateY(50px) scale(0.9);
-    transition: opacity 1.1s ease, transform 1.1s ease;
+    transition: opacity 1.1s ease, transform 1.1s ease, filter 1.1s ease;
 }
 
 .announcement--show-photo .announcement__photo {
@@ -251,6 +253,7 @@ body.showing-announcement .slideshow {
 .announcement__details {
     display: grid;
     gap: 1.2rem;
+    transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
 .announcement__speaker {
@@ -316,9 +319,33 @@ body.showing-announcement .slideshow {
     transform: translateY(0);
 }
 
+.announcement--exit-phase {
+    background: rgba(18, 255, 0, 0.12);
+}
+
+.announcement--exit-phase .announcement__inner {
+    background: rgba(8, 15, 32, 0.65);
+}
+
+.announcement--exit-phase .announcement__header {
+    opacity: 0;
+    transform: translateY(-70px);
+}
+
+.announcement--exit-phase .announcement__photo {
+    opacity: 0;
+    transform: translateX(-120%) scale(0.92);
+    filter: blur(3px);
+}
+
+.announcement--exit-phase .announcement__details {
+    opacity: 0;
+    transform: translateX(120%) scale(0.94);
+}
+
 .announcement--final-stage {
     animation: none;
-    background: rgba(18, 255, 0, 0.92);
+    background: rgba(18, 255, 0, 0.25);
 }
 
 .announcement--final-stage .announcement__inner {
@@ -332,12 +359,13 @@ body.showing-announcement .slideshow {
     background: #12ff00;
     z-index: 5;
     opacity: 0;
-    transition: opacity 0.6s ease;
     pointer-events: none;
+    clip-path: polygon(50% 100%, 50% 100%, 50% 100%);
+    will-change: clip-path, opacity;
 }
 
 .announcement__final--visible {
-    opacity: 1;
+    animation: announcement-final-wipe 2.8s ease-in-out forwards;
 }
 
 @keyframes announcement-backdrop {
@@ -358,6 +386,25 @@ body.showing-announcement .slideshow {
     }
     50%, 100% {
         opacity: 0;
+    }
+}
+
+@keyframes announcement-final-wipe {
+    0% {
+        opacity: 0;
+        clip-path: polygon(50% 100%, 50% 100%, 50% 100%);
+    }
+    35% {
+        opacity: 0.85;
+        clip-path: polygon(0% 100%, 100% 100%, 50% 65%);
+    }
+    65% {
+        opacity: 0.95;
+        clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+    100% {
+        opacity: 1;
+        clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
     }
 }
 
