@@ -59,7 +59,14 @@ $state = loadState();
                     <p class="hashtag"><?= htmlspecialchars($event['hashtag']) ?></p>
                 </div>
             </section>
-           >
+            <section class="slide slide--app">
+                <div class="slide__content">
+                    <h2>Oceń prelegentów</h2>
+                    <p>Pobierz aplikację i podziel się opinią.</p>
+                    <p class="app-link"><?= htmlspecialchars($event['appLink']) ?></p>
+                    <p class="app-qr">(tu może być kod QR)</p>
+                </div>
+            </section>
         </div>
     </div>
 
