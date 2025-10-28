@@ -15,14 +15,7 @@ return [
         'intervalSeconds' => 8,
     ],
     'talks' => [
-        [
-            'time' => '15:30',
-            'title' => 'Rejestracja uczestników',
-            'speaker' => 'Zespół Data Event Wrocław',
-            'speakerRole' => 'Obsługa wydarzenia',
-            'description' => 'Powitanie, szybka formalność przy wejściu oraz pierwsze rozmowy przy kawie i przekąskach.',
-            'photo' => 'https://cdn.prod.website-files.com/6846a8e58a5f31ba4f45e475/68e58d3cedf20af0fa17313d_event-avatar-RST-Staff.png',
-        ],
+     
         [
             'time' => '16:10',
             'title' => 'Rynek analityki danych otwiera więcej drzwi niż kiedykolwiek — dlaczego firmy wciąż je zatrzaskują?',
