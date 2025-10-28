@@ -94,8 +94,8 @@ body.showing-announcement .slideshow {
 }
 
 .slide--logo .slide__logo {
-    width: 60%;
-    max-width: 700px;
+    width: 80%;
+    max-width: 1000px;
 }
 
 .event-title {
