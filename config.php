@@ -64,13 +64,5 @@ return [
             'description' => 'Jak agentic AI i Snowflake pomagają wychwytywać ukryte zależności, anomalie i strategiczne szanse w danych.',
             'photo' => 'https://cdn.prod.website-files.com/6846a8e58a5f31ba4f45e475/68e58d3c9c44d1779a8e262a_event-photo-Mykyta-Antoshchuk.png',
         ],
-        [
-            'time' => '18:50',
-            'title' => 'Networking i rozmowy po prelekcjach',
-            'speaker' => 'Community Time',
-            'speakerRole' => 'Networking',
-            'description' => 'Swobodne rozmowy, wymiana kontaktów i pomysłów z prelegentami oraz uczestnikami wydarzenia.',
-            'photo' => 'https://placehold.co/600x800?text=Networking',
-        ],
     ],
 ];
