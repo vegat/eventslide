@@ -22,7 +22,7 @@ $state = loadState();
         <div class="slides">
             <section class="slide slide--logo">
                 <div class="slide__content">
-                    <img src="<?= htmlspecialchars($event['logo']) ?>" alt="Logo wydarzenia" class="slide__logo">
+                    <img src="<?= htmlspecialchars($event['logo']) ?>" alt="Logo wydarzenia" class="slide__logo" style="width: 80%;">
                 </div>
             </section>
             <section class="slide slide--details">
