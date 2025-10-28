@@ -7,8 +7,8 @@ return [
         'organizer' => 'RST Data Software',
         'hashtag' => '#DataEventWroclaw',
         'appLink' => 'https://dataeventwroclaw.pl/aplikacja',
-        'logo' => 'https://placehold.co/600x300?text=RST+Data+Meetup',
-        'organizerLogo' => 'https://placehold.co/180x120?text=RST+Software',
+        'logo' => '/events/eventlogo.png',
+        'organizerLogo' => '/events/rstdata.svg',
         'techCrewLogo' => 'https://placehold.co/180x120?text=Tech+Crew',
     ],
     'slideshow' => [

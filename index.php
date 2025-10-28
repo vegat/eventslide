@@ -72,7 +72,7 @@ $state = loadState();
 
     <div class="branding-overlay">
         <img src="<?= htmlspecialchars($event['organizerLogo']) ?>" alt="Logo organizatora" class="branding-overlay__logo branding-overlay__logo--top">
-        <img src="<?= htmlspecialchars($event['techCrewLogo']) ?>" alt="Logo ekipy technicznej" class="branding-overlay__logo branding-overlay__logo--bottom">
+      <!--  <img src="<?= htmlspecialchars($event['techCrewLogo']) ?>" alt="Logo ekipy technicznej" class="branding-overlay__logo branding-overlay__logo--bottom">-->
     </div>
 
     <div class="announcement" id="announcement" hidden>
